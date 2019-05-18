@@ -1,4 +1,6 @@
+{% extends 'blog/base.html' %}
 {% load static %}
+
 <html>
 	<head>
 		 <title>Zoe's c0de blog</title>
@@ -9,34 +11,23 @@
        
     </head>
 <body>
-	<h1> Welcome!</h1>
 
-	<div class="page-header">
-          <h1><a href="/">I refer to my own directory. WHY?</a></h1>
-    </div>
-    <div class="post">
-	    <p>published: {{ post.published_date }}</p>
-	    <h2><a href="">{{ post.title }}</a></h2>
-	    <p>{{ post.text|linebreaksbr }}</p>
-    </div>
 
-	<h2> More things </h2>
-	<h2><a href="https://tutorial.djangogirls.org/en/css/">this is the tutorial I am doing</a></h2>
-    <p>Hi there!</p>
 
-    <img src = "https://cdn.shopify.com/s/files/1/0992/7712/products/IMG_9279-5_grande.jpg?v=1470932329"> </body>
 	<div class="content container">
 	    <div class="row">
 	        <div class="col-md-8">
-	            {% for post in posts %}
-	                <div class="post">
-	                    <div class="date">
-	                        <p>published: {{ post.published_date }}</p>
-	                    </div>
-	                    <h2><a href="">{{ post.title }}</a></h2>
-	                    <p>{{ post.text|linebreaksbr }}</p>
-	                </div>
-	            {% endfor %}
+	        	{% block content %}
+		            {% for post in posts %}
+		                <div class="post">
+		                    <div class="date">
+		                        <p>published: {{ post.published_date }}</p>
+		                    </div>
+		                    <<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+		                    <p>{{ post.text|linebreaksbr }}</p>
+		                </div>
+		            {% endfor %}
+	            {% endblock %}
 	        </div>
 	    </div>
 	</div>
