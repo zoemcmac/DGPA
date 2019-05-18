@@ -1,0 +1,2 @@
+#requirements
+Django~=2.0.6
